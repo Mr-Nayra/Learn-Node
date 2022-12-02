@@ -1,0 +1,64 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/customer.css">
+    </head>
+
+    <body>
+        <%- include('../includes/header.ejs') %>
+            <div class="flex">
+            <div class="nav">
+                <a href="/"><ion-icon name="people-outline"></ion-icon></a>
+                <a href="/reservations" style="margin: 18px 0;"><ion-icon name="home-outline"></ion-icon></a>
+                <a href="/services"><ion-icon name="clipboard-outline"></ion-icon></a>
+            </div>
+            <main>
+                <header class="header">
+                    <h2>Bill-Details - <%= name %> </h2>
+                    
+                </header>
+                <ul class="row-header">
+                    <li>
+                        Reservation No
+                    </li>
+                    <li>
+                        Customer ID
+                    </li>
+                    <li>
+                        Total Amount
+                    </li>
+                    <li>
+                        Days
+                    </li>
+                    <li>
+                        Service Name
+                    </li>
+                    
+                </ul>
+                <% if (billdata.length> 0) { %>
+                    <% billdata.forEach(p=> {%>
+                <ul class="row">
+                    <li>
+                        <%= p.Reservation_no %> 
+                    </li>
+                    <li>
+                        <%= p.Customer_id%> 
+                    </li>
+                    <li>
+                        <%= p.Amount %> 
+                    </li>
+                    <li>
+                        <%= p.DAYS %> 
+                    </li>
+                    <li>
+                        <%= p.Service_details %> 
+                    </li>
+                    
+                    
+                </ul><%}) %>
+
+
+                <% } else { %>
+                    <h1>No Reservations</h1>
+                    <% } %>
+            </main>
+        </div>
+            <%- include('../includes/end.ejs') %>

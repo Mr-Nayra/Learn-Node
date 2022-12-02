@@ -1,0 +1,93 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/customer.css">
+    </head>
+
+    <body>
+        <%- include('../includes/header.ejs') %>
+            <div class="flex">
+            <div class="nav">
+                <a href="/"><ion-icon name="people-outline"></ion-icon></a>
+                <a href="/reservations" style="margin: 18px 0;"><ion-icon name="home-outline"></ion-icon></a>
+                <a href="/services"><ion-icon name="clipboard-outline"></ion-icon></a>
+            </div>
+            <main>
+                <header class="header">
+                    <h2>Reservations</h2>
+                    <a href="/reservations/add-reservation">
+                        <button>Add New Reservation</button>
+                    </a>
+                </header>
+                <ul class="row-header">
+                    <li>
+                        Reservation No
+                    </li>
+                    <li>
+                        Customer ID
+                    </li>
+                    <li>
+                        Customer Name
+                    </li>
+                    <li>
+                        Service Id
+                    </li>
+                    <li>
+                        Service Name
+                    </li>
+                    <li>
+                        Check In
+                    </li>
+                    <li>
+                        Check Out
+                    </li>
+                    <li>
+                        Room ID
+                    </li>
+                    <li>
+                        Actions
+                    </li>
+                    
+                </ul>
+                <% if (reservations.length> 0) { %>
+                    <% reservations.forEach(p=> {%>
+                <ul class="row">
+                    <li>
+                        <%= p.reservation_no %> 
+                    </li>
+                    <li>
+                        <%= p.Customer_id%> 
+                    </li>
+                    <li>
+                        <%= p.Name %> 
+                    </li>
+                    <li>
+                        <%= p.Service_id %> 
+                    </li>
+                    <li>
+                        <%= p.Service_name %> 
+                    </li>
+                    <li>
+                        <%= p.Check_in_date %> 
+                    </li>
+                    <li>
+                        <%= p.Check_out_date %> 
+                    </li>
+                    <li>
+                        <%= p.room_id%> 
+                    </li>
+                    <li>
+                        <form action="/reservations/bill-details" method="GET" style="margin: 0 10px 0 0;">
+                            <input type="hidden" value="<%= p.reservation_no %>" name="reservation_no" />
+                            <input type="hidden" value="<%= p.Name %>" name="name" />
+                            <button type="submit"><ion-icon name="eye-outline"></ion-icon></button>
+                        </form>
+                    </li>
+                    
+                </ul><%}) %>
+
+
+                <% } else { %>
+                    <h1>No Reservations</h1>
+                    <% } %>
+            </main>
+        </div>
+            <%- include('../includes/end.ejs') %>

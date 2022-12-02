@@ -1,0 +1,34 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/customer.css">
+    </head>
+
+    <body>
+        <%- include('../includes/header.ejs') %>
+            <div class="flex">
+            <div class="nav">
+                <a href="/"><ion-icon name="people-outline"></ion-icon></a>
+                <a href="/reservations" style="margin: 18px 0;"><ion-icon name="home-outline"></ion-icon></a>
+                <a href="/services"><ion-icon name="clipboard-outline"></ion-icon></a>
+            </div>
+            <main>
+                <form class="form" action="/admin/add-service" method="POST">
+                    <div class="form-control">
+                        <label for="Service_id">Service Id</label>
+                        <input type="number" name="Service_id" id="Service_id" value="">
+                    </div>
+                    <div class="form-control">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" value="">
+                    </div>
+                    <div class="form-control">
+                        <label for="charge">Charge</label>
+                        <input type="number" name="charge" id="charge">
+                    </div>
+                    <button class="btn" type="submit">
+                        Add Service
+                    </button>
+                </form>
+                
+            </main>
+        </div>
+        <%- include('../includes/end.ejs') %>

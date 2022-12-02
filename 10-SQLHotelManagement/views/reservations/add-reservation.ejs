@@ -1,0 +1,70 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/customer.css">
+    </head>
+
+    <body>
+        <%- include('../includes/header.ejs') %>
+            <div class="flex">
+            <div class="nav">
+                <a href="/"><ion-icon name="people-outline"></ion-icon></a>
+                <a href="/reservations" style="margin: 18px 0;"><ion-icon name="home-outline"></ion-icon></a>
+                <a href="/services"><ion-icon name="clipboard-outline"></ion-icon></a>
+            </div>
+            <main>
+                <form class="customer-form" action="/admin/add-reservation" method="POST">
+                    <div class="form-control">
+                        <label for="Reservation_no">Reservation Number</label>
+                        <input required type="number" name="Reservation_no" id="Reservation_no" value="">
+                    </div>
+                    <div class="form-control">
+                        <label for="Customer_id">Customer Id</label>
+                        <select name="Customer_id" id="Customer_id">
+                            <% customers.forEach(p=> {%>
+                            <option value="<%= p.Customer_id %>"> <%= p.Customer_id %> </option>
+                            <%}) %>
+                          </select>
+                    </div>
+                    <div class="form-control">
+                        <label for="Service_id">Service Id</label>
+                        <select name="Service_id" id="Service_id">
+                            <% Services.forEach(p=> {%>
+                            <option value="<%= p.Service_id %>">  <%= p.Service_id %>  </option>
+                            <%}) %>
+                          </select>
+                    </div>
+                    <div class="form-control">
+                        <label for="Check_in">Room numder</label>
+                        <select name="room" id="room">
+                            <option value="1">1 </option>
+                            <option value="2">2 </option>
+                            <option value="3">3 </option>
+                            <option value="4">4 </option>
+                            <option value="5">5 </option>
+                            <option value="7">7 </option>
+                            <option value="8">8 </option>
+                            <option value="9">9 </option>
+                            <option value="10">10 </option>
+                          </select>
+                    </div>
+                    <div class="form-control">
+                        <label for="Check_in">Check In Date</label>
+                        <input required type="date" name="Check_in" id="Check_in" min="<%= date %>">
+                    </div>
+                    <div class="form-control">
+                        <label for="Check_out">Check Out Date</label>
+                        <input required type="date" name="Check_out" id="Check_out" min="<%= date %>">
+                    </div>
+                    <div class="form-control">
+                        <label for="status">Status</label>
+                        <select name="status" id="status">
+                            <option value="completed"> Completed </option>
+                          </select>
+                    </div>
+                    <button class="btn" type="submit">
+                        Add Reservation
+                    </button>
+                </form>
+                
+            </main>
+        </div>
+        <%- include('../includes/end.ejs') %>

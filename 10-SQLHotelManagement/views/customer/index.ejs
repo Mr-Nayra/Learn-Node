@@ -1,0 +1,88 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/customer.css">
+    </head>
+
+    <body>
+        <%- include('../includes/header.ejs') %>
+            <div class="flex">
+            <div class="nav">
+                <a href="/"><ion-icon name="people-outline"></ion-icon></a>
+                <a href="/reservations" style="margin: 18px 0;"><ion-icon name="home-outline"></ion-icon></a>
+                <a href="/services"><ion-icon name="clipboard-outline"></ion-icon></a>
+            </div>
+            <main>
+                <header class="header">
+                    <h2>Customers</h2>
+                    <a href="/add-customer">
+                        <button>Add New Customer</button>
+                    </a>
+                </header>
+                <ul class="row-header">
+                    <li>
+                        Customer Id
+                    </li>
+                    <li>
+                            Name
+                    </li>
+                    <li>
+                        Address
+                    </li>
+                    <li>
+                        Phone Number
+                    </li>
+                    <li>
+                        Age
+                    </li>
+                    <li>
+                        Zip code
+                    </li>
+                    <li style="flex: 2;">
+                        Actions
+                    </li>
+                </ul>
+                <% if (customers.length> 0) { %>
+                    <% customers.forEach(p=> {%>
+                <ul class="row">
+                    <li>
+                        <%= p.Customer_id %> 
+                    </li>
+                    <li>
+                            <%= p.Name %> 
+                    </li>
+                    <li>
+                        <%= p.Address %> 
+                    </li>
+                    <li>
+                        <%= p.Contact_No %> 
+                    </li>
+                    <li>
+                        <%= p.Age %> 
+                    </li>
+                    <li>
+                        <%= p.Zip_code %> 
+                    </li>
+                    <li style="flex: 2;"> 
+                        <form action="/delete-customer" method="POST" style="margin: 0 10px 0 0;">
+                            <input type="hidden" value="<%= p.Customer_id %>" name="customerId" />
+                            <button type="submit"><ion-icon name="trash-outline"></ion-icon></button>
+                        </form>
+                        <form action="/update-customer" method="GET" style="margin: 0 10px 0 0;">
+                            <input type="hidden" value="<%= p.Customer_id %>" name="Customer_id" />
+                            <input type="hidden" value="<%= p.Name %>" name="Name" />
+                            <input type="hidden" value="<%= p.Address %>" name="Address" />
+                            <input type="hidden" value="<%= p.Contact_No %>" name="number" />
+                            <input type="hidden" value="<%= p.Age %>" name="Age" />
+                            <input type="hidden" value="<%= p.Zip_code %>" name="Zip_code" />
+                            <button type="submit"><ion-icon name="pencil-outline"></ion-icon></button>
+                        </form>
+                                             
+                    </li>
+                </ul><%}) %>
+
+
+                <% } else { %>
+                    <h1>No Customers</h1>
+                    <% } %>
+            </main>
+        </div>
+            <%- include('../includes/end.ejs') %>

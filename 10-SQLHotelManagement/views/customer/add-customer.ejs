@@ -1,0 +1,46 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/customer.css">
+    </head>
+
+    <body>
+        <%- include('../includes/header.ejs') %>
+            <div class="flex">
+            <div class="nav">
+                <a href="/"><ion-icon name="people-outline"></ion-icon></a>
+                <a href="/reservations" style="margin: 18px 0;"><ion-icon name="home-outline"></ion-icon></a>
+                <a href="/services"><ion-icon name="clipboard-outline"></ion-icon></a>
+            </div>
+            <main>
+                <form class="customer-form" action="/admin/add-customer" method="POST">
+                    <div class="form-control">
+                        <label for="Customer_id">Customer Id</label>
+                        <input required type="number" name="Customer_id" id="Customer_id" value="">
+                    </div>
+                    <div class="form-control">
+                        <label for="name">Name</label>
+                        <input required type="text" name="name" id="name" value="">
+                    </div>
+                    <div class="form-control">
+                        <label for="Address">Address</label>
+                        <input required type="text" name="Address" id="Address" maxlength="50" size="50">
+                    </div>
+                    <div class="form-control">
+                        <label for="phone_number">Phone-Number</label>
+                        <input required type="number" name="phone_number" id="phone_number" min="1000000000" max="9999999999">
+                    </div>
+                    <div class="form-control">
+                        <label for="age">Age</label>
+                        <input required type="number" name="age" id="age" min="18" max="100">
+                    </div>
+                    <div class="form-control">
+                        <label for="zip_code">Zip code</label>
+                        <input required type="number" name="zip_code" id="zip_code" type="text" pattern="[0-9]*">
+                    </div>
+                    <button class="btn" type="submit">
+                        Add Customer
+                    </button>
+                </form>
+                
+            </main>
+        </div>
+        <%- include('../includes/end.ejs') %>

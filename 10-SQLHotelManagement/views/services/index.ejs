@@ -1,0 +1,66 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/customer.css">
+    </head>
+
+    <body>
+        <%- include('../includes/header.ejs') %>
+            <div class="flex">
+            <div class="nav">
+                <a href="/"><ion-icon name="people-outline"></ion-icon></a>
+                <a href="/reservations" style="margin: 18px 0;"><ion-icon name="home-outline"></ion-icon></a>
+                <a href="/services"><ion-icon name="clipboard-outline"></ion-icon></a>
+            </div>
+            <main>
+                <header class="header">
+                    <h2>Packages</h2>
+                    <a href="/services/add-service">
+                        <button>Add New Package</button>
+                    </a>
+                </header>
+                <ul class="row-header">
+                    <li>
+                        Service Id
+                    </li>
+                    <li>
+                            Name
+                    </li>
+                    <li>
+                        Charge
+                    </li>
+                    <li>
+                        Actions
+                    </li>
+                </ul>
+                <% if (services.length> 0) { %>
+                    <% services.forEach(p=> {%>
+                <ul class="row">
+                    <li>
+                        <%= p.Service_id %> 
+                    </li>
+                    <li>
+                            <%= p.Service_name %> 
+                    </li>
+                    <li>
+                        <%= p.Sevice_charge %> 
+                    </li>
+                    <li>
+                        <form action="/update-service" method="GET" style="margin: 0 10px 0 0;">
+                            <input type="hidden" value="<%= p.Service_id %>" name="Service_id" />
+                            <input type="hidden" value="<%= p.Service_name %>" name="Service_name" />
+                            <input type="hidden" value="<%= p.Sevice_charge %>" name="Sevice_charge" />
+                            <button type="submit"><ion-icon name="pencil-outline"></ion-icon></button>
+                        </form>
+                        <!-- <form action="/delete-service" method="POST">
+                            <input type="hidden" value="<%= p.Service_id %>" name="serviceId" />
+                            <button type="submit"><ion-icon name="trash-outline"></ion-icon></button>
+                        </form>                         -->
+                    </li>
+                </ul><%}) %>
+
+
+                <% } else { %>
+                    <h1>No Services</h1>
+                    <% } %>
+            </main>
+        </div>
+            <%- include('../includes/end.ejs') %>
